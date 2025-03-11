@@ -98,7 +98,7 @@ module PublicActivity
     #   </p>
     def render(context, params = {})
       partial_root  = params.delete(:root)         || 'public_activity'
-      partial_path  = nil
+      partial_path  = params.delete(:partial)      || nil
       layout_root   = params.delete(:layout_root)  || 'layouts'
 
       if params.has_key? :display

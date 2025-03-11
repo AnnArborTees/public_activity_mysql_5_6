@@ -38,9 +38,9 @@ module PublicActivity
           if table_exists?
             unless %i[json jsonb hstore].include?(columns_hash['parameters'].type)
               if ::ActiveRecord.version.release < Gem::Version.new('7.1')
-                serialize :parameters, Hash
+                serialize :parameters, JSON
               else
-                serialize :parameters, coder: YAML, type: Hash
+                serialize :parameters, coder: JSON, type: Hash
               end
             end
           else
